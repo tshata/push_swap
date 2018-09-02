@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/checker.h"
+
 void	rotate(t_stack *stack)
 {
 	int temp;
@@ -19,14 +21,14 @@ void	rotate(t_stack *stack)
 		temp  = stack->integers[0];
 		ft_memmove(&(stack->integers[0]), &(stack->integers[1]), 
 						sizeof(int)* (stack->current_size));
-		stack->nums[stack->current_size - 1] = temp;
+		stack->integers[stack->current_size - 1] = temp;
 	}
 }
 
 void	rotate_all(t_stack *s_a, t_stack *s_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(s_a);
+	rotate(s_b);
 }
 
 void	reverse_rotate(t_stack *stack)

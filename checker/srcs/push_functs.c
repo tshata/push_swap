@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/checker.h"
+
 int		is_empty(t_stack *stack)
 {
 	if (stack->current_size)
@@ -24,8 +26,8 @@ void	push_a(t_stack *s_a, t_stack *s_b)
 	if (is_empty(s_b))
 	{
 		temp = (s_b->integers)[0];
-		ft_memmove(&(s_b->integers[0], &s_b->integers[1], sizeof(int) * s_b->current_size));
-		ft_memmove(&(s_a->integers[1], &s_a->integers[0], sizeof(int) * s_a->current_size));
+		ft_memmove(&s_b->integers[0], &s_b->integers[1], sizeof(int) * s_b->current_size);
+		ft_memmove(&s_a->integers[1], &s_a->integers[0], sizeof(int) * s_a->current_size);
 		s_a->integers[0] = temp;
 		s_a->current_size += 1;
 		s_b->current_size -= 1;
@@ -39,8 +41,8 @@ void	push_b(t_stack *s_a, t_stack *s_b)
 	if (is_empty(s_b))
 	{
 		temp = (s_b->integers)[0];
-		ft_memmove(&(s_a->integers[0], &s_a->integers[1], sizeof(int) * s_a->current_size));
-		ft_memmove(&(s_b->integers[1], &s_b->integers[0], sizeof(int) * s_b->current_size));
+		ft_memmove(&s_a->integers[0], &s_a->integers[1], sizeof(int) * s_a->current_size);
+		ft_memmove(&s_b->integers[1], &s_b->integers[0], sizeof(int) * s_b->current_size);
 		s_b->integers[0] = temp;
 		s_b->current_size += 1;
 		s_a->current_size -= 1;
