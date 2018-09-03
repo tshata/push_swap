@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/01 15:01:05 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/03 16:44:09 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/checker.h"
@@ -24,14 +24,14 @@ char		*update_solution(char *solution, char *op)
 	return (solution);
 }
 
-void		reverse_op(char *op, t_stack *stack_a, t_stack *stack_b)
+void		reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 {
 	if (ft_strcmp(op, "rra") == 0)
-		reverse_rotate(stack_a);
+		reverse_rotate(s_a);
 	else if (ft_strcmp(op, "rrb") == 0)
-		reverse_rotate(stack_b);
+		reverse_rotate(s_b);
 	else if (ft_strcmp(op, "rrr") == 0)
-		reverse_rotate_both(stack_a, stack_b);
+		reverse_rotate_both(s_a, s_b);
 }
 void		print_spaces(int spaces)
 {
@@ -39,28 +39,28 @@ void		print_spaces(int spaces)
 		ft_putchar(' ');
 }
 
-int			perform_op(char *op, t_stack *stack_a,
-					t_stack *stack_b, t_flags *flags)
+int			exec_inst(char *op, t_stack *s_a,
+					t_stack *s_b)
 {
 	if (ft_strcmp(op, "sa") == 0)
-		swap_first_two(stack_a);
+		swap_top(s_a);
 	else if (ft_strcmp(op, "sb") == 0)
-		swap_first_two(stack_b);
+		swap_top(s_b);
 	else if (ft_strcmp(op, "ss") == 0)
-		swap_both(stack_a, stack_b);
+		swap_both(s_a, s_b);
 	else if (ft_strcmp(op, "pa") == 0)
-		push_on_a(stack_a, stack_b);
+		push_a(s_a, s_b);
 	else if (ft_strcmp(op, "pb") == 0)
-		push_on_b(stack_a, stack_b);
+		push_b(s_a, s_b);
 	else if (ft_strcmp(op, "ra") == 0)
-		rotate(stack_a);
+		rotate(s_a);
 	else if (ft_strcmp(op, "rb") == 0)
-		rotate(stack_b);
+		rotate(s_b);
 	else if (ft_strcmp(op, "rr") == 0)
-		rotate_both(stack_a, stack_b);
+		rotate_both(s_a, s_b);
 	else if (ft_strcmp(op, "rra") == 0 || ft_strcmp(op, "rrb") == 0
 			|| ft_strcmp(op, "rrr") == 0)
-		reverse_op(op, stack_a, stack_b);
+		reverse_op(op, s_a, s_b);
 	else
 	{
 		ft_putstr("Error\n");
@@ -69,21 +69,21 @@ int			perform_op(char *op, t_stack *stack_a,
 	return (1);
 }
 
-void		find_min(t_stack *stack_a)
+void		find_min(t_stack *s_a)
 {
 	int		min;
 	int		i;
 
-	min = stack_a->nums[0];
-	stack_a->min_num = min;
+	min = s_a->nbrs[0];
+	s_a->min_nbr = min;
 	i = 1;
-	while (i < stack_a->cur_size)
+	while (i < s_a->current_size)
 	{
-		if (stack_a->nums[i] < min)
+		if (s_a->nbrs[i] < min)
 		{
-			min = stack_a->nums[i];
-			stack_a->min_num = min;
-			stack_a->min_idx = i;
+			min = s_a->nbrs[i];
+			s_a->min_nbr = min;
+			s_a->min_idx = i;
 		}
 		i++;
 	}

@@ -6,33 +6,36 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 12:20:09 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/02 21:49:14 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/03 17:44:11 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-int				get_nums(char *str, t_stack *stack_a)
+int				read_nbrs(char *str, t_stack *s_a)
 {
 	int			sign;
-	long int	num;
+	long int	nbr;
 
-	num = 0;
+	nbr = 0;
 	sign = 1;
 	while (*str)
 	{
 		if (*str == '-')
 			sign = -1;
 		else if (ft_isdigit(*str))
-			num = (num * 10) + (*str - '0');
+			nbr = (nbr * 10) + (*str - '0');
 		if (*str == ' ' || !(*(str + 1)))
 		{
-			num *= sign;
-			if (!is_valid(num, stack_a))
+			nbr *= sign;
+			if (!is_valid(nbr, s_a))
+			{
+				ft_putstr("Error\n");
 				exit(1);
-			stack_a->nums[stack_a->cur_size] = num;
-			stack_a->cur_size++;
-			num = 0;
+			}
+			s_a->nbrs[s_a->current_size] = nbr;
+			s_a->current_size++;
+			nbr = 0;
 			sign = 1;
 		}
 		str++;
@@ -40,86 +43,85 @@ int				get_nums(char *str, t_stack *stack_a)
 	return (1);
 }
 
-int				make_stack_a(char **av, int ac, t_stack *stack_a)
+int				fill_s_a(char **argv, int argc, t_stack *s_a)
 {
 	int			i;
+	int 		temp;
 
+	temp 
 	i = 0;
-	while (i < ac)
+	while (i < argc)
 	{
-		get_nums(av[i], stack_a);
+		if(!read_nbrs(argv[i], s_a))
+			ft_putstr("Error\n");
 		i++;
 	}
 	return (1);
 }
 
-static void		setup(t_stack *stack_a, t_stack *stack_b, int size, char **av)
+static void		start(t_stack *s_a, t_stack *s_b, int size, char **argv)
 {
-	int			nums;
+	int			nbrs;
 	int			i;
 
 	i = 0;
-	nums = 0;
+	nbrs = 0;
 	while (i < size)
 	{
-		if (!are_numbers(av[i]))
+		if (!get_nbrs(argv[i]))
 		{
 			ft_putstr("Error_se\n");
 			exit(1);
 		}
-		nums += are_numbers(av[i]);
+		nbrs += get_nbrs(argv[i]);
 		i++;
 	}
-	stack_a->max_size = nums;
-	stack_a->cur_size = 0;
-	stack_a->nums = (int*)malloc(sizeof(int) * nums);
-	stack_b->max_size = nums;
-	stack_b->cur_size = 0;
-	stack_b->nums = (int*)malloc(sizeof(int) * nums);
+	s_a->max_size = nbrs;
+	s_a->current_size = 0;
+	s_a->nbrs = (int*)malloc(sizeof(int) * nbrs);
+	s_b->max_size = nbrs;
+	s_b->current_size = 0;
+	s_b->nbrs = (int*)malloc(sizeof(int) * nbrs);
 }
 
-void			handle_input(char *line, t_stack *stack_a,
-						t_stack *stack_b, t_flags *flags)
+int			handle_input(char *line, t_stack *s_a, t_stack *s_b)
 {
 	
 	while ((get_next_line(0, &line) == 1))
 	{
-		if (!perform_op(line, stack_a, stack_b, flags))
+		if (!exec_inst(line, s_a, s_b))
 		{
 			ft_putstr("Error_h\n");
-			exit(1);
+			return (0);
 		}
 		free(line);
 	}
+	return (1);
 }
 
-static void		setup_flags(t_flags *flags)
-{
-	flags->v = 0;
-	flags->c = 0;
-}
 
-int				main(int ac, char **av)
+
+int				main(int argc, char **argv)
 {
-	t_stack		stack_a;
-	t_stack		stack_b;
-	t_flags		flags;
+	t_stack		s_a;
+	t_stack		s_b;
+	int			size;	
 	char		*line;
 
-	if (ac > 1)
+	size = argc - 1;
+	if (argc > 1)
 	{
-		setup_flags(&flags);
-		av = check_for_flags(av, &flags, &ac);
-		setup(&stack_a, &stack_b, (ac - 1), av);
+		start(&s_a, &s_b, size, argv);
 		line = NULL;
-		if (make_stack_a(av, (ac - 1), &stack_a))
-			handle_input(line, &stack_a, &stack_b, &flags);
-		if (is_sorted(stack_a.nums, stack_a.cur_size) &&
-					(stack_b.cur_size == 0))
+		if (fill_s_a(argv, size, &s_a))
+			handle_input(line, &s_a, &s_b);
+		else if (!handle_input(line, &s_a, &s_b))
+				ft_putstr("Error\n");
+		else if (is_sorted(s_a.nbrs, s_a.current_size) && (s_b.current_size == 0))
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
 	}
-	free(stack_a.nums);
-	free(stack_b.nums);
+	free(s_a.nbrs);
+	free(s_b.nbrs);
 }
