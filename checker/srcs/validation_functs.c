@@ -12,59 +12,79 @@
 
 #include "../includes/checker.h"
 
-int		is_valid(t_stack *s_a,int nbr)
+int		is_duplicate(t_stack *stack, int num)
 {
-	//check for max int and min int
-	if (nbr >= -2147483648 || nbr <= 2147483647)
-		return (1);
-	else if (is_duplicate(s_a, nbr))
-		return (0);
-	else
-		return (0);
-	//check duplicates also
-}
-
-int		is_duplicate(t_stack *stack, int nbr)
-{
-	//compare nbr with numbers already in stack
 	int	i;
-	
+
 	i = 0;
-	while (i < stack->current_size)
+	while (i < stack->cur_size)
 	{
-		if (stack->integers[i] == nbr)
+		if (stack->nums[i] == num)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int		is_sorted(int *nbr, int size)
+int		is_valid(long int num, t_stack *stack_a)
 {
-	int 	i;
-	
+	if (is_duplicate(stack_a, num))
+		return (0);
+	else
+		return (1);
+}
+
+int		is_sorted(int *nums, int size)
+{
+	int	i;
+
 	i = 0;
-	while (i < size - 1)
+	while (i < (size - 1))
 	{
-		if (nbr[i] > nbr[i + 1])
+		if (nums[i] > nums[i + 1])
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int		is_revsorted(int *nbr, int size)
+int		is_revsorted(int *nums, int size)
 {
-	//i + 1 > i
 	int	i;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < (size - 1))
 	{
-		if (nbr[i] < nbr[i + 1])
+		if (nums[i] < nums[i + 1])
 			return (0);
 		i++;
 	}
 	return (1);
-	
+}
+
+int		are_numbers(char *str)
+{
+	int	nums;
+
+	nums = 0;
+	while (*str)
+	{
+		if (*str == '-' && ft_isdigit(*(str + 1)))
+			str++;
+		else if (*str == ' ' && (ft_isdigit(*(str - 1)) ||
+							ft_isdigit(*(str + 1))))
+		{
+			str++;
+			nums++;
+		}
+		else if (ft_isdigit(*str))
+		{
+			str++;
+			if (!*str)
+				nums++;
+		}
+		else
+			return (0);
+	}
+	return (nums);
 }

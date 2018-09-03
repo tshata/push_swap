@@ -12,157 +12,114 @@
 
 #include "../includes/checker.h"
 
-int	ft_is_number(char *str)
+int				get_nums(char *str, t_stack *stack_a)
 {
-	int	nbr;
-	int	i;
+	int			sign;
+	long int	num;
 
-	i = 0;
-	nbr = 0;
-	while(str[i])
+	num = 0;
+	sign = 1;
+	while (*str)
 	{
-		if (str[i] == '-' && ft_isdigit(str[i + 1]))
-			i++;
-		else if (str[i] == ' ' && (ft_isdigit(str[i]) || ft_isdigit(str[i])))
+		if (*str == '-')
+			sign = -1;
+		else if (ft_isdigit(*str))
+			num = (num * 10) + (*str - '0');
+		if (*str == ' ' || !(*(str + 1)))
 		{
-			i++;
-			nbr++;
+			num *= sign;
+			if (!is_valid(num, stack_a))
+				exit(1);
+			stack_a->nums[stack_a->cur_size] = num;
+			stack_a->cur_size++;
+			num = 0;
+			sign = 1;
 		}
-		else if (ft_isdigit(str[i]))
-		{
-			i++;
-		if (!str[i])
-				nbr++;
-		}
-		else
-			return (0);
+		str++;
 	}
-	return (nbr);
-}	
-int 	read_input(t_stack *s_a, char *str)
-{
-	int                     sign;
-        long int        nbr;
-	int 		i;
-
-       	nbr = 0;
-	i = 0;
-        sign = 1;
-        while (str[i])
-        {
-                if (str[i] == '-')
-                        sign = -1;
-                else if (ft_isdigit(str[i]))
-                        nbr = (nbr * 10) + (str[i] - '0');
-                if (str[i] == ' ' || !(str[i + 1]))
-                {
-                        nbr *= sign;
-                        if (!is_valid(s_a, nbr))
-			{
-				ft_putstr("Error_r\n");
-                                exit(1);
-			}
-                        s_a->integers[s_a->current_size] = nbr;
-	//		ft_putnbr((int)s_a->integers);
-                        s_a->current_size++;
-                        nbr = 0;
-                        sign = 1;
-                }
-                i++;
-       
-//		ft_atoi(str);
-       	}
-        return (1);
-
+	return (1);
 }
 
-int	fill_stack_a(t_stack *s_a, int	argc, char **argv)
+int				make_stack_a(char **av, int ac, t_stack *stack_a)
 {
-	int	i;
+	int			i;
 
 	i = 0;
-	while (i <= argc)
+	while (i < ac)
 	{
-		ft_putstr("foo");
-		read_input(s_a, argv[i]);
+		get_nums(av[i], stack_a);
 		i++;
 	}
 	return (1);
 }
 
-static void	init_ps(t_stack *s_a, t_stack *s_b, int size, char **argv)
+static void		setup(t_stack *stack_a, t_stack *stack_b, int size, char **av)
 {
-	int	nbr;
-	int 	i;
-	
-	i = 2;
-	nbr = 0;
-	ft_putstr("here\n");
+	int			nums;
+	int			i;
+
+	i = 0;
+	nums = 0;
 	while (i < size)
 	{
-	/*	if (!ft_is_number(argv[i]))
+		if (!are_numbers(av[i]))
 		{
-			ft_putstr("Error_i\n");
-			exit (1);
-		}ft_putstr("nnon\n");
-*/
-		nbr += ft_is_number(argv[i]);
+			ft_putstr("Error_se\n");
+			exit(1);
+		}
+		nums += are_numbers(av[i]);
 		i++;
 	}
-	s_a->real_size = i;
-	s_a->current_size = 0;
-//	s_a->integers = (int*)malloc(sizeof(int) * nbr);
-	s_b->real_size = nbr;
-	s_b->current_size = 0;
-//	s_b->integers = (int*)malloc(sizeof(int) * nbr);
+	stack_a->max_size = nums;
+	stack_a->cur_size = 0;
+	stack_a->nums = (int*)malloc(sizeof(int) * nums);
+	stack_b->max_size = nums;
+	stack_b->cur_size = 0;
+	stack_b->nums = (int*)malloc(sizeof(int) * nums);
 }
-	
-void	input_handler(t_stack *s_a, t_stack *s_b, char *line)
+
+void			handle_input(char *line, t_stack *stack_a,
+						t_stack *stack_b, t_flags *flags)
 {
-	//get_next_line
-	//execute instructions
-	while ((get_next_line(0, &line)))
+	
+	while ((get_next_line(0, &line) == 1))
 	{
-		if (!(exec_inst(s_a, s_b, line)))
+		if (!perform_op(line, stack_a, stack_b, flags))
 		{
-			ft_putstr("Error_e\n");
+			ft_putstr("Error_h\n");
 			exit(1);
 		}
 		free(line);
 	}
 }
 
-int			main(int argc, char **argv)
+static void		setup_flags(t_flags *flags)
 {
-	t_stack		*s_a;
-	t_stack		*s_b;
-	char 		*line;
-	int			size;
+	flags->v = 0;
+	flags->c = 0;
+}
 
-	size = 0;
-	size = argc - 1;
-	if (argc > 1)
+int				main(int ac, char **av)
+{
+	t_stack		stack_a;
+	t_stack		stack_b;
+	t_flags		flags;
+	char		*line;
+
+	if (ac > 1)
 	{
-		ft_putstr("run\n");
-		init_ps(s_a, s_b, size, argv);
-		ft_putstr("init\n");
+		setup_flags(&flags);
+		av = check_for_flags(av, &flags, &ac);
+		setup(&stack_a, &stack_b, (ac - 1), av);
 		line = NULL;
-		if (fill_stack_a(s_a, size, argv))
-		{
-			ft_putstr("nksncjd");
-			input_handler(s_a, s_b, line);
-			ft_putstr("after input");
-		if (is_sorted(s_a->integers, s_a->current_size) && (s_b->current_size == 0))
+		if (make_stack_a(av, (ac - 1), &stack_a))
+			handle_input(line, &stack_a, &stack_b, &flags);
+		if (is_sorted(stack_a.nums, stack_a.cur_size) &&
+					(stack_b.cur_size == 0))
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
-		}}
-	free(s_a->integers);
-	free(s_b->integers);
-
-return (0);
-
-
-
-
+	}
+	free(stack_a.nums);
+	free(stack_b.nums);
 }

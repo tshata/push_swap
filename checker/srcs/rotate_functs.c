@@ -14,38 +14,35 @@
 
 void	rotate(t_stack *stack)
 {
-	int temp;
+	int	temp;
 
-	if(!is_empty(stack))
+	if (stack->cur_size)
 	{
-		temp  = stack->integers[0];
-		ft_memmove(&(stack->integers[0]), &(stack->integers[1]), 
-						sizeof(int)* (stack->current_size));
-		stack->integers[stack->current_size - 1] = temp;
+		temp = (stack->nums)[0];
+		ft_memmove(&(stack->nums[0]), &(stack->nums[1]),
+					sizeof(int) * (stack->cur_size));
+		stack->nums[stack->cur_size - 1] = temp;
 	}
 }
 
-void	rotate_all(t_stack *s_a, t_stack *s_b)
+void	rotate_both(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(s_a);
-	rotate(s_b);
+	rotate(stack_a);
+	rotate(stack_b);
 }
 
 void	reverse_rotate(t_stack *stack)
 {
-	int		temp;
+	int	temp;
 
-	if (!is_empty(stack))
-	{
-		temp = stack->integers[stack->current_size - 1];
-		ft_memmove(&(stack->integers[1]), &stack->integers[0], 
-				sizeof(int) * (stack->current_size));
-		stack->integers[0] = temp;
-	}
+	temp = stack->nums[stack->cur_size - 1];
+	ft_memmove(&(stack->nums[1]), &(stack->nums[0]),
+				sizeof(int) * (stack->cur_size));
+	stack->nums[0] = temp;
 }
 
-void	reverse_rotate_all(t_stack *s_a, t_stack *s_b)
+void	reverse_rotate_both(t_stack *stack_a, t_stack *stack_b)
 {
-	reverse_rotate(s_a);
-	reverse_rotate(s_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }
