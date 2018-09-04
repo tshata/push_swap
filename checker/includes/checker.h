@@ -33,7 +33,7 @@ int				is_duplicate(t_stack *stack, int nbr);
 int				is_valid(long int nbr, t_stack *s_a);
 int				is_sorted(int *nbrs, int size);
 int				is_revsorted(int *nbrs, int size);
-int				get_nbrs(char *str);
+int				count_nbrs(char *str);
 int				exec_inst(char *op, t_stack *s_a, t_stack *s_b);
 void			push_a(t_stack *s_a, t_stack *s_b);
 void			push_b(t_stack *s_a, t_stack *s_b);

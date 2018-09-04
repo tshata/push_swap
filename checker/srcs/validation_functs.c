@@ -28,17 +28,6 @@ int		is_duplicate(t_stack *stack, int nbr)
 	return (0);
 }
 
-int		is_valid(long int nbr, t_stack *s_a)
-{
-	if (is_duplicate(s_a, nbr))
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
-	else
-		return (1);
-}
-
 int		is_sorted(int *nbrs, int size)
 {
 	int	i;
@@ -67,7 +56,7 @@ int		is_revsorted(int *nbrs, int size)
 	return (1);
 }
 
-int		get_nbrs(char *str)
+int		count_nbrs(char *str)
 {
 	int	nbrs;
 
@@ -76,8 +65,7 @@ int		get_nbrs(char *str)
 	{
 		if (*str == '-' && ft_isdigit(*(str + 1)))
 			str++;
-		else if (*str == ' ' && (ft_isdigit(*(str - 1)) ||
-							ft_isdigit(*(str + 1))))
+		else if (*str == ' ' && (ft_isdigit(*(str - 1)) || ft_isdigit(*(str + 1))))
 		{
 			str++;
 			nbrs++;
@@ -92,5 +80,4 @@ int		get_nbrs(char *str)
 			return (0);
 	}
 	return (nbrs);
-
 }
