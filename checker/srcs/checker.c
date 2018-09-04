@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 12:20:09 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 17:44:11 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/04 17:10:15 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int	read_nbrs(char *str, t_stack *s_a)
 		if (*str == ' ' || !(*(str + 1)))
 		{
 			nbr *= sign;
-			if (!is_duplicate(s_a, nbr) && nbr != 0)
+			if (!is_valid(s_a, nbr) && nbr != 0)
+			{
+				ft_putstr("Error\n");
 				exit(0);
+			}
 			s_a->nbrs[s_a->current_size] = nbr;
 			s_a->current_size++;
 			nbr = 0;
@@ -45,7 +48,7 @@ int				fill_s_a(char **argv, int argc, t_stack *s_a)
 	int			i;
 
 	i = 0;
-	while (i < argc)
+	while (i <= argc)
 	{
 		read_nbrs(argv[i], s_a);
 		i++;
@@ -53,7 +56,7 @@ int				fill_s_a(char **argv, int argc, t_stack *s_a)
 	return (1);
 }
 
-static void		start(t_stack *s_a, t_stack *s_b, int size, char **argv)
+void		init(t_stack *s_a, t_stack *s_b, int size, char **argv)
 {
 	int			nbr;
 	int			i;
@@ -64,10 +67,11 @@ static void		start(t_stack *s_a, t_stack *s_b, int size, char **argv)
 	{
 		if (!count_nbrs(argv[i]))
 		{
-			ft_putstr("Error\n");
+			ft_putstr("Error_count\n");
 			exit(0);
 		}
 		nbr += count_nbrs(argv[i]);
+	//	ft_putnbr(nbr);
 		i++;
 	}
 	s_a->max_size = nbr;
@@ -79,36 +83,42 @@ static void		start(t_stack *s_a, t_stack *s_b, int size, char **argv)
 }
 
 int			handle_input(char *line, t_stack *s_a, t_stack *s_b)
-{
-	
+{	
 	while ((get_next_line(0, &line) == 1))
 	{
 		if (!exec_inst(line, s_a, s_b))
 		{
-			ft_putstr("Error\n");
+			ft_putstr("Error_input\n");
 			exit(0);
 		}
 		free(line);
 	}
+	return (1);
 }
 
 int				main(int argc, char **argv)
 {
 	t_stack		s_a;
 	t_stack		s_b;
+	int			size;
 	char		*line;
 
+	size = 0;
+	size = argc - 1;
 	if (argc > 1)
 	{
-		start(&s_a, &s_b, (argc - 1), argv);
+		init(&s_a, &s_b, size, argv);
 		line = NULL;
-		if (fill_s_a(argv, (argc - 1), &s_a))
+		if (fill_s_a(argv, size, &s_a))
 			handle_input(line, &s_a, &s_b);
 		if (is_sorted(s_a.nbrs, s_a.current_size) && (s_b.current_size == 0))
 			ft_putstr("OK\n");
-		else
+		else if (!is_sorted(s_a.nbrs, s_a.current_size))
 			ft_putstr("KO\n");
-	}
+		else
+			ft_putstr("Error\n");
+	
 	free(s_a.nbrs);
 	free(s_b.nbrs);
+	}
 }
