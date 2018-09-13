@@ -6,10 +6,10 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 16:44:09 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:01:36 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 char		*update_solution(char *solution, char *op)
 {

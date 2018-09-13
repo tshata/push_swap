@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 13:33:33 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/04 14:45:14 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 13:58:46 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ typedef struct	s_stack
 	int			*nbrs;
 	int			current_size;
 	int			max_size;
-	int			min_idx;
-	int			min_nbr;
 }				t_stack;
 
-void			print_spaces(int spaces);
-int				longest_int_len(t_stack *s_a);
-char			*update_solution(char *solution, char *op);
 void			swap_top(t_stack *stack);
 void			swap_both(t_stack *s_a, t_stack *s_b);
-int				empty_stack(t_stack *stack);
+int				is_empty(t_stack *stack);
 int				is_duplicate(t_stack *stack, int nbr);
 int				is_valid(t_stack *s_a, long int nbr);
 int				is_sorted(int *nbrs, int size);
@@ -42,7 +37,6 @@ void			rotate_both(t_stack *s_a, t_stack *s_b);
 void			reverse_rotate(t_stack *stack);
 void			reverse_rotate_both(t_stack *s_a, t_stack *s_b);
 int				handle_input(char *line, t_stack *s_a, t_stack *s_b);
-void			find_min(t_stack *s_a);
 void			start(t_stack *s_a, t_stack *s_b, int size, char **argv);
 
 #endif

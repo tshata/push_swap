@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:23:59 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 17:02:38 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:00:53 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 int		is_empty(t_stack *stack)
 {

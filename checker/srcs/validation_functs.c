@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:11 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/04 17:09:46 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 13:50:02 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int		is_duplicate(t_stack *stack, int nbr)
 
 int		is_valid(t_stack *stack, long int nbr)
 {
-//	if (ft_isalnum(nbr) || ft_isalpha(nbr))
-//		return (0);
+	if (ft_isalpha(nbr))
+		return (0);
 	if (nbr > 2147483647 || nbr < -2147483648 || is_duplicate(stack ,nbr))
 		return (0);
 	else
@@ -81,18 +81,15 @@ int		count_nbrs(char *str)
 		else if (str[i] == ' ' && (ft_isdigit(str[i - 1]) || ft_isdigit(str[i + 1])))
 		{
 			i++;
-			//nbrs++;//	ft_putchar('=');
 		}
 		else if (ft_isdigit(str[i]))
 		{
 			i++;
-			//if (str[i] == '\0')
-				nbrs++;//	ft_putchar('@');
+			nbrs++;
 		}
 		else
 		{
-		//	nbrs++;
-			return (1);	//ft_putchar('#');
+			return (1);
 		}
 	}
 	return (nbrs);

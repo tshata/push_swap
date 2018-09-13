@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:37:59 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 17:17:58 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:01:55 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 void	rotate(t_stack *stack)
 {

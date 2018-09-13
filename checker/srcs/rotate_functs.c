@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:37:59 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 17:17:58 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 13:50:44 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	rotate(t_stack *stack)
 	if (stack->current_size)
 	{
 		temp = (stack->nbrs)[0];
-		ft_memmove(&(stack->nbrs[0]), &(stack->nbrs[1]),
-					sizeof(int) * (stack->current_size));
+		ft_memmove(&(stack->nbrs[0]), &(stack->nbrs[1]), 4 * (stack->current_size));
 		stack->nbrs[stack->current_size - 1] = temp;
 	}
 }
@@ -36,8 +35,7 @@ void	reverse_rotate(t_stack *stack)
 	int	temp;
 
 	temp = stack->nbrs[stack->current_size - 1];
-	ft_memmove(&(stack->nbrs[1]), &(stack->nbrs[0]),
-				sizeof(int) * (stack->current_size));
+	ft_memmove(&(stack->nbrs[1]), &(stack->nbrs[0]), 4 * (stack->current_size));
 	stack->nbrs[0] = temp;
 }
 

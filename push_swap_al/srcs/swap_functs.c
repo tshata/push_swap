@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:18:22 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 17:18:06 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:01:12 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 void	swap_top(t_stack *stack)
 {

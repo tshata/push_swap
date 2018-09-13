@@ -6,25 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/03 16:44:09 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 13:57:41 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/checker.h"
-
-char		*update_solution(char *solution, char *op)
-{
-	char	*dst;
-	size_t	len;
-
-	len = ft_strlen(solution);
-	dst = solution + len;
-	ft_strcpy(dst, op);
-	ft_strcat(dst, "\n");
-	solution = ft_memalloc(len + 5);
-	return (solution);
-}
-
-void		reverse_op(char *op, t_stack *s_a, t_stack *s_b)
+void	reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 {
 	if (ft_strcmp(op, "rra") == 0)
 		reverse_rotate(s_a);
@@ -33,12 +19,6 @@ void		reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 	else if (ft_strcmp(op, "rrr") == 0)
 		reverse_rotate_both(s_a, s_b);
 }
-void		print_spaces(int spaces)
-{
-	while (spaces--)
-		ft_putchar(' ');
-}
-
 int			exec_inst(char *op, t_stack *s_a,
 					t_stack *s_b)
 {
@@ -63,28 +43,8 @@ int			exec_inst(char *op, t_stack *s_a,
 		reverse_op(op, s_a, s_b);
 	else
 	{
-		ft_putstr("Error\n");
+		ft_putstr("Error_instr\n");
 		exit(1);
 	}
 	return (1);
-}
-
-void		find_min(t_stack *s_a)
-{
-	int		min;
-	int		i;
-
-	min = s_a->nbrs[0];
-	s_a->min_nbr = min;
-	i = 1;
-	while (i < s_a->current_size)
-	{
-		if (s_a->nbrs[i] < min)
-		{
-			min = s_a->nbrs[i];
-			s_a->min_nbr = min;
-			s_a->min_idx = i;
-		}
-		i++;
-	}
 }

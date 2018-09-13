@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:11 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/04 17:09:46 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/13 14:01:24 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 #include "../../libft/libft.h"
 
 int		is_duplicate(t_stack *stack, int nbr)
