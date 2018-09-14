@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 13:33:33 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/13 14:02:22 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/14 22:16:56 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@ typedef struct	s_stack
 	int			min_nbr;
 }				t_stack;
 
-void			print_spaces(int spaces);
+void			solve_five_2(t_stack *s_a, t_stack *s_b);
+void			solve_five_3(t_stack *s_a, t_stack *s_b);
+void			solve_five_4(t_stack *s_a, t_stack *s_b);
+void			solve_five_5(t_stack *s_a, t_stack *s_b);
+void			solve_five_3(t_stack *s_a, t_stack *s_b);
+void			solve_three(t_stack *s_a);
+void			solve_five(t_stack *s_a, t_stack *s_b);
 int				longest_int_len(t_stack *s_a);
-char			*update_solution(char *solution, char *op);
 void			swap_top(t_stack *stack);
 void			swap_both(t_stack *s_a, t_stack *s_b);
 int				empty_stack(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/13 14:01:36 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/14 23:21:18 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/push_swap.h"
@@ -39,8 +39,7 @@ void		print_spaces(int spaces)
 		ft_putchar(' ');
 }
 
-int			exec_inst(char *op, t_stack *s_a,
-					t_stack *s_b)
+int			exec_inst(char *op, t_stack *s_a, t_stack *s_b)
 {
 	if (ft_strcmp(op, "sa") == 0)
 		swap_top(s_a);

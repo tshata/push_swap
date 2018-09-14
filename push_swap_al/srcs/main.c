@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 17:24:01 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/13 17:09:20 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/14 22:51:21 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 int read_nbrs(char *str, t_stack *s_a)
 {
@@ -59,6 +59,7 @@ int             fill_s_a(char **argv, int argc, t_stack *s_a)
 //      ft_putnbr(ft_atoi(argv[i]));
         i++;
 	}
+	i = 1;
     return (1);
 }
 
@@ -76,7 +77,7 @@ void        init(t_stack *s_a, t_stack *s_b, int size, char **argv)
             ft_putstr("Error\n");
             exit(0);
         }
-        nbr += count_nbrs(argv[i]);
+		nbr += count_nbrs(argv[i]);
     //  ft_putnbr(nbr);
         i++;
     }
@@ -86,6 +87,9 @@ void        init(t_stack *s_a, t_stack *s_b, int size, char **argv)
     s_b->max_size = nbr;
     s_b->current_size = 0;
     s_b->nbrs = (int*)malloc(sizeof(int) * nbr);
+	i = 0;
+	while (i++ <= s_b->current_size)
+		s_b->nbrs[i] = 0;
 }
 
 int         handle_input(char *line, t_stack *s_a, t_stack *s_b)
@@ -108,24 +112,20 @@ int             main(int argc, char **argv)
     t_stack     s_a;
     t_stack     s_b;
     int         size;
-    char        *line;
-
+  
     size = 0;
     size = argc - 1;
-    if (argc > 1)
+    if (size > 0)
     {
         init(&s_a, &s_b, size, argv);
-        line = NULL;
         if (fill_s_a(argv, size, &s_a))
-        //    solve(line, &s_a, &s_b);
-		//    function to run push_swap comes here
-        if (is_sorted(s_a.nbrs, s_a.current_size) && (s_b.current_size == 0))
-            ft_putstr("OK\n");
-        else if (!is_sorted(s_a.nbrs, s_a.current_size))
-            ft_putstr("KO\n");
-        else
-            ft_putstr("Error\n");
-    free(s_a.nbrs);
-    free(s_b.nbrs);
+		{
+			if (size == 3)
+				solve_three(&s_a);
+			else if (size == 5)
+				solve_five(&s_a, &s_b);
+		}
+		free(s_a.nbrs);
+    	free(s_b.nbrs);
     }
 }
