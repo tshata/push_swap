@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 17:24:01 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 02:21:02 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/15 03:16:03 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,17 @@ int             main(int argc, char **argv)
 		{
 			if (size == 3)
 				solve_three(&s_a);
+			if (size == 4)
+			{
+				solve_4(&s_a, &s_b);
+				solve_three(&s_a);
+				ft_putendl("pa");
+				push_a(&s_a, &s_b);
+			}
 			else if (size == 5)
 				solve_five(&s_a, &s_b);
+			else if (size > 5)
+				solve_big(&s_a, &s_b);
 		}
 		free(s_a.nbrs);
     	free(s_b.nbrs);
