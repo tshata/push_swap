@@ -1,15 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   work.c                                :+:      :+:    :+:   */
+/*   work.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/13 13:57:41 by tshata           ###   ########.fr       */
+/*   Created: 2018/09/15 05:59:04 by tshata            #+#    #+#             */
+/*   Updated: 2018/09/15 05:59:21 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/checker.h"
+
 void	reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 {
 	if (ft_strcmp(op, "rra") == 0)
@@ -19,7 +21,8 @@ void	reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 	else if (ft_strcmp(op, "rrr") == 0)
 		reverse_rotate_both(s_a, s_b);
 }
-int			exec_inst(char *op, t_stack *s_a,
+
+int		exec_inst(char *op, t_stack *s_a,
 					t_stack *s_b)
 {
 	if (ft_strcmp(op, "sa") == 0)

@@ -6,13 +6,13 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 12:20:09 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 03:56:22 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/15 06:00:33 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-int	read_nbrs(char *str, t_stack *s_a)
+int		read_nbrs(char *str, t_stack *s_a)
 {
 	int			sign;
 	long int	nbr;
@@ -48,7 +48,7 @@ int	read_nbrs(char *str, t_stack *s_a)
 	return (1);
 }
 
-int				fill_s_a(char **argv, int argc, t_stack *s_a)
+int		fill_s_a(char **argv, int argc, t_stack *s_a)
 {
 	int			i;
 
@@ -62,7 +62,7 @@ int				fill_s_a(char **argv, int argc, t_stack *s_a)
 	return (1);
 }
 
-void		init(t_stack *s_a, t_stack *s_b, int size, char **argv)
+void	init(t_stack *s_a, t_stack *s_b, int size, char **argv)
 {
 	int			nbr;
 	int			i;
@@ -77,7 +77,6 @@ void		init(t_stack *s_a, t_stack *s_b, int size, char **argv)
 			exit(0);
 		}
 		nbr += count_nbrs(argv[i]);
-	//	ft_putnbr(nbr);
 		i++;
 	}
 	s_a->max_size = nbr;
@@ -88,11 +87,10 @@ void		init(t_stack *s_a, t_stack *s_b, int size, char **argv)
 	s_b->nbrs = (int*)malloc(sizeof(int) * nbr);
 }
 
-int			handle_input(char *line, t_stack *s_a, t_stack *s_b)
+int		handle_input(char *line, t_stack *s_a, t_stack *s_b)
 {	
 	while ((get_next_line(0, &line) == 1))
 	{
-		//exec_inst(line, s_a, s_b);
 		if (!exec_inst(line, s_a, s_b))
 		{
 			ft_putstr("Error\n");
@@ -103,7 +101,7 @@ int			handle_input(char *line, t_stack *s_a, t_stack *s_b)
 	return (1);
 }
 
-int				main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_stack		s_a;
 	t_stack		s_b;

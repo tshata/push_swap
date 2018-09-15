@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   work.c                                :+:      :+:    :+:   */
+/*   work.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/01 14:56:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/14 23:21:18 by tshata           ###   ########.fr       */
+/*   Created: 2018/09/15 05:48:15 by tshata            #+#    #+#             */
+/*   Updated: 2018/09/15 05:48:19 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 char		*update_solution(char *solution, char *op)
@@ -32,11 +33,6 @@ void		reverse_op(char *op, t_stack *s_a, t_stack *s_b)
 		reverse_rotate(s_b);
 	else if (ft_strcmp(op, "rrr") == 0)
 		reverse_rotate_both(s_a, s_b);
-}
-void		print_spaces(int spaces)
-{
-	while (spaces--)
-		ft_putchar(' ');
 }
 
 int			exec_inst(char *op, t_stack *s_a, t_stack *s_b)
