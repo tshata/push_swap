@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 13:33:33 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/14 22:16:56 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/15 02:12:29 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void			solve_five_2(t_stack *s_a, t_stack *s_b);
 void			solve_five_3(t_stack *s_a, t_stack *s_b);
 void			solve_five_4(t_stack *s_a, t_stack *s_b);
 void			solve_five_5(t_stack *s_a, t_stack *s_b);
-void			solve_five_3(t_stack *s_a, t_stack *s_b);
+void			solve_five_1(t_stack *s_a, t_stack *s_b);
 void			solve_three(t_stack *s_a);
+void			solve_4(t_stack *s_a, t_stack *s_b);
 void			solve_five(t_stack *s_a, t_stack *s_b);
 int				longest_int_len(t_stack *s_a);
 void			swap_top(t_stack *stack);

@@ -6,11 +6,11 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 01:24:37 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 01:25:47 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/15 02:17:17 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.c"
+#include "../includes/push_swap.h"
 
 void	solve_five_1(t_stack *s_a, t_stack *s_b)
 {
@@ -55,10 +55,11 @@ void	solve_five_4(t_stack *s_a, t_stack *s_b)
 	ft_putendl("rra");
 	reverse_rotate(s_a);
 	push_b(s_a, s_b);
+	ft_putendl("pb");
 	solve_4(s_a, s_b);
 	solve_three(s_a);
 	ft_putendl("pa");
-//	ft_putendl("pa");
+	ft_putendl("pa");
 }
 
 void	solve_five_5(t_stack *s_a, t_stack *s_b)
@@ -66,6 +67,7 @@ void	solve_five_5(t_stack *s_a, t_stack *s_b)
 	ft_putendl("rra");
 	reverse_rotate(s_a);
 	ft_putendl("pb");
+	push_b(s_a, s_b);
 	solve_4(s_a, s_b);
 	solve_three(s_a);
 	ft_putendl("pa");
