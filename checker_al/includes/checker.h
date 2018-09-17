@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 13:33:33 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/13 13:58:46 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 17:55:50 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_stack
 	int			max_size;
 }				t_stack;
 
-void			read_nbrs_ext(t_stack *s_a, char *str, long int nbr, int  sign);
+void			read_nbrs_ext(t_stack *s_a, long int nbr, int sign);
 void			swap_top(t_stack *stack);
 void			swap_both(t_stack *s_a, t_stack *s_b);
 int				is_empty(t_stack *stack);

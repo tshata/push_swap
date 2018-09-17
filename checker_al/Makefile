@@ -6,15 +6,16 @@
 #    By: tshata <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/13 10:57:57 by tshata            #+#    #+#              #
-#    Updated: 2018/09/13 12:12:05 by tshata           ###   ########.fr        #
+#    Updated: 2018/09/17 17:49:27 by tshata           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Executable
-NAME = ./checker
+NAME = ../checker
 
 # Path
 SRC_PATH = ./srcs/
+OBJ_PATH = ./objs/
 INC_PATH = ./includes/
 
 # Sources
@@ -24,17 +25,17 @@ SRC_NAME = checker.c\
 		   push_functs.c\
 		   swap_functs.c\
 		   work.c\
+		   read_nbrs_ext.c\
 
-OBJ_Name = $(SRC_NAME:.c = .o)
+OBJ_NAME = $(SRC_NAME:.c=.o)
 
 # Files
-SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
-OBJ = $(addprefix $(SRC_PATH), $(OBJ_PATH))
+SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 # Flags
 
-LDFFLAGS += -L ../libft -lft
-LIB = ../libft/libft.a -lft
+LDFLAGS += -L ../libft -lft
 CC = gcc $(CFLAGS)
 
 CFLAGS = -Wall -Wextra -Werror -I. -g
@@ -45,7 +46,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INC_PATH)
 	@make -C ../libft/
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
-	@$(CC) $(LDFLAGS) $(SRC) $(OBJ) -o $@ $(LIB)
+	@$(CC) $(LDFLAGS) $(OBJ) -o $@
 	@echo "\033[32m$(NAME) created\n\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c

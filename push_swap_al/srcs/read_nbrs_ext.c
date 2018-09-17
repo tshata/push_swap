@@ -6,13 +6,13 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:20:13 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/17 12:39:39 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 17:51:21 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		read_nbrs_ext(t_stack *s_a, char *str, long int nbr, int sign)
+void		read_nbrs_ext(t_stack *s_a, long int nbr, int sign)
 {
 	nbr *= sign;
 	if (!is_valid(s_a, nbr) && nbr != 0)

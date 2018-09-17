@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 13:33:33 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/17 12:05:15 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 17:55:32 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_stack
 	int			min_nbr;
 }				t_stack;
 
-void			read_nbrs_ext(t_stack *s_a, char *str, long int nbr, int  sign);
+void			read_nbrs_ext(t_stack *s_a, long int nbr, int sign);
 void			choose_solution(t_stack s_a, t_stack s_b, int size);
 void			solve_five_2(t_stack *s_a, t_stack *s_b);
 void			solve_five_3(t_stack *s_a, t_stack *s_b);

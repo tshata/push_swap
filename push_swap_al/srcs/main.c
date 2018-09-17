@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 17:24:01 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/17 12:29:13 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 17:53:33 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		read_nbrs(char *str, t_stack *s_a)
 		else if (ft_isdigit(*str))
 			nbr = (nbr * 10) + (*str - '0');
 		if (*str == ' ' || !(*(str + 1)))
-			read_nbrs_ext(s_a, str, nbr, sign);
+			read_nbrs_ext(s_a, nbr, sign);
 		str++;
 	}
 	return (1);
