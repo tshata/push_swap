@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 05:59:04 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 05:59:21 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:36:32 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		exec_inst(char *op, t_stack *s_a,
 		reverse_op(op, s_a, s_b);
 	else
 	{
-		ft_putstr("Error_instr\n");
+		ft_putstr("Error\n");
 		exit(1);
 	}
 	return (1);

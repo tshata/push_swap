@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 05:48:15 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 05:48:19 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 12:19:58 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,23 @@ void		find_min(t_stack *s_a)
 		}
 		i++;
 	}
+}
+
+void		choose_solution(t_stack s_a, t_stack s_b, int size)
+{
+	if (size == 3)
+		solve_three(&s_a);
+	else if (size == 4)
+	{
+		solve_4(&s_a, &s_b);
+		if (is_sorted(s_a.nbrs, size))
+			exit(1);
+		solve_three(&s_a);
+		ft_putendl("pa");
+		push_a(&s_a, &s_b);
+	}
+	else if (size == 5)
+		solve_five(&s_a, &s_b);
+	else if (size > 5 || size == 2)
+		solve_big(&s_a, &s_b);
 }

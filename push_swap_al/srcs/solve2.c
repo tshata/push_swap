@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 01:24:37 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/17 08:49:18 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 12:01:09 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	solve_five_1(t_stack *s_a, t_stack *s_b)
 {
 	if (is_sorted(s_a->nbrs, 5))
 	{
-		exit (1);
+		exit(1);
 	}
 	ft_putendl("pb");
 	push_b(s_a, s_b);
@@ -46,7 +46,7 @@ void	solve_five_3(t_stack *s_a, t_stack *s_b)
 	rotate(s_a);
 	if (is_sorted(s_a->nbrs, 5))
 	{
-		exit (1);
+		exit(1);
 	}
 	ft_putendl("pb");
 	push_b(s_a, s_b);
@@ -64,7 +64,7 @@ void	solve_five_4(t_stack *s_a, t_stack *s_b)
 	ft_putendl("rra");
 	if (is_sorted(s_a->nbrs, 5))
 	{
-		exit (1);
+		exit(1);
 	}
 	push_b(s_a, s_b);
 	ft_putendl("pb");
@@ -76,11 +76,11 @@ void	solve_five_4(t_stack *s_a, t_stack *s_b)
 
 void	solve_five_5(t_stack *s_a, t_stack *s_b)
 {
-	ft_putendl("rra");		
+	ft_putendl("rra");
 	reverse_rotate(s_a);
 	if (is_sorted(s_a->nbrs, 5))
 	{
-		return ;
+		exit(1);
 	}
 	ft_putendl("pb");
 	push_b(s_a, s_b);

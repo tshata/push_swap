@@ -6,21 +6,21 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:37:59 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/14 20:45:28 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 12:36:46 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stk)
 {
 	int	temp;
 
-	if (stack->current_size)
+	if (stk->current_size)
 	{
-		temp = (stack->nbrs)[0];
-		ft_memmove(&(stack->nbrs[0]), &(stack->nbrs[1]), 4 * (stack->current_size));
-		stack->nbrs[stack->current_size - 1] = temp;
+		temp = (stk->nbrs)[0];
+		ft_memmove(&(stk->nbrs[0]), &(stk->nbrs[1]), 4 * (stk->current_size));
+		stk->nbrs[stk->current_size - 1] = temp;
 	}
 }
 

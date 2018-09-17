@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 12:20:09 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/17 11:01:01 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:36:17 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,12 @@ int		read_nbrs(char *str, t_stack *s_a)
 		else if (!ft_isdigit(*str))
 		{
 			ft_putstr("Error\n");
-			exit (0);
+			exit(0);
 		}
 		else if (ft_isdigit(*str))
 			nbr = (nbr * 10) + (*str - '0');
 		if (*str == ' ' || !(*(str + 1)))
-		{
-			nbr *= sign;
-			if (!is_valid(s_a, nbr))
-			{
-				ft_putstr("Error_ll\n");
-				exit(0);
-			}
-			s_a->nbrs[s_a->current_size] = nbr;
-			s_a->current_size++;
-			nbr = 0;
-			sign = 1;
-		}
+			read_nbrs_ext(s_a, str, nbr, sign);
 		str++;
 	}
 	return (1);
@@ -56,7 +45,6 @@ int		fill_s_a(char **argv, int argc, t_stack *s_a)
 	while (i <= argc)
 	{
 		read_nbrs(argv[i], s_a);
-//		ft_putnbr(ft_atoi(argv[i]));
 		i++;
 	}
 	return (1);
@@ -88,7 +76,7 @@ void	init(t_stack *s_a, t_stack *s_b, int size, char **argv)
 }
 
 int		handle_input(char *line, t_stack *s_a, t_stack *s_b)
-{	
+{
 	while ((get_next_line(0, &line) == 1))
 	{
 		if (!exec_inst(line, s_a, s_b))
@@ -121,8 +109,8 @@ int		main(int argc, char **argv)
 		else if (!is_sorted(s_a.nbrs, s_a.current_size))
 			ft_putstr("KO\n");
 		else
-			ft_putstr("Error\n");	
-	free(s_a.nbrs);
-	free(s_b.nbrs);
+			ft_putstr("Error\n");
+		free(s_a.nbrs);
+		free(s_b.nbrs);
 	}
 }

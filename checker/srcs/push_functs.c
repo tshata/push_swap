@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:23:59 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/14 20:45:09 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:13:00 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		is_empty(t_stack *stack)
 	else
 		return (1);
 }
+
 void	push_a(t_stack *s_a, t_stack *s_b)
 {
 	int	temp;
@@ -48,5 +49,3 @@ void	push_b(t_stack *s_a, t_stack *s_b)
 		(s_a->current_size)--;
 	}
 }
-
-

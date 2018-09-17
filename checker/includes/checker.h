@@ -21,6 +21,7 @@ typedef struct	s_stack
 	int			max_size;
 }				t_stack;
 
+void			read_nbrs_ext(t_stack *s_a, char *str, long int nbr, int  sign);
 void			swap_top(t_stack *stack);
 void			swap_both(t_stack *s_a, t_stack *s_b);
 int				is_empty(t_stack *stack);
