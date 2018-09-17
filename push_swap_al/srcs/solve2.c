@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/15 01:24:37 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 05:47:32 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 08:49:18 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	solve_five_5(t_stack *s_a, t_stack *s_b)
 {
 	ft_putendl("rra");		
 	reverse_rotate(s_a);
-	if (is_sorted(s_a->nbrs, sizeof(s_a->nbrs)))
+	if (is_sorted(s_a->nbrs, 5))
 	{
-		exit (1);
+		return ;
 	}
 	ft_putendl("pb");
 	push_b(s_a, s_b);

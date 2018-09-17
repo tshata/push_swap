@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 14:56:11 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 03:54:40 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:01:48 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int		is_duplicate(t_stack *stack, int nbr)
 
 int		is_valid(t_stack *stack, long int nbr)
 {
-	if (ft_isalpha(nbr))
-		return (0);
+
 	if (nbr > 2147483647 || nbr < -2147483648 || is_duplicate(stack ,nbr))
 		return (0);
 	else

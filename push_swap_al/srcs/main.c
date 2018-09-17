@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/04 17:24:01 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 05:55:06 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:00:56 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int		main(int argc, char **argv)
 			}
 			else if (size == 5)
 				solve_five(&s_a, &s_b);
-			else if (size > 5)
+			else if (size > 5 || size == 2)
 				solve_big(&s_a, &s_b);
 		}
 		free(s_a.nbrs);

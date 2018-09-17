@@ -6,7 +6,7 @@
 /*   By: tshata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 12:20:09 by tshata            #+#    #+#             */
-/*   Updated: 2018/09/15 06:00:33 by tshata           ###   ########.fr       */
+/*   Updated: 2018/09/17 11:01:01 by tshata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		read_nbrs(char *str, t_stack *s_a)
 		if (*str == ' ' || !(*(str + 1)))
 		{
 			nbr *= sign;
-			if (!is_valid(s_a, nbr) && nbr != 0)
+			if (!is_valid(s_a, nbr))
 			{
-				ft_putstr("Error\n");
+				ft_putstr("Error_ll\n");
 				exit(0);
 			}
 			s_a->nbrs[s_a->current_size] = nbr;
