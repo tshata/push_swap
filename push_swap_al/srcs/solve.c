@@ -43,6 +43,9 @@ void		solve_three(t_stack *s_a)
 void		solve_4(t_stack *s_a, t_stack *s_b)
 {
 	find_min(s_a);
+	if (is_sorted(s_a->nbrs, s_a->current_size))
+		return ;
+
 	if (s_a->min_nbr == s_a->nbrs[0])
 	{
 		ft_putendl("pb");
@@ -76,6 +79,9 @@ void		solve_4(t_stack *s_a, t_stack *s_b)
 void		solve_five(t_stack *s_a, t_stack *s_b)
 {
 	find_min(s_a);
+	if (is_sorted(s_a->nbrs, s_a->current_size))
+		return ;
+
 	if (s_a->min_nbr == s_a->nbrs[0])
 		solve_five_1(s_a, s_b);
 	else if (s_a->min_nbr == s_a->nbrs[1])
@@ -91,8 +97,8 @@ void		solve_five(t_stack *s_a, t_stack *s_b)
 void		solve_big(t_stack *s_a, t_stack *s_b)
 {
 	find_min(s_a);
-	if (s_a->min_idx > s_a->current_size / 2)
-	{
+//	if (s_a->min_idx >= s_a->current_size / 2)
+//	{
 		while (s_a->min_nbr != s_a->nbrs[0])
 		{
 			find_min(s_a);
@@ -104,8 +110,8 @@ void		solve_big(t_stack *s_a, t_stack *s_b)
 				push_b(s_a, s_b);
 			}
 		}
-	}
-	else
+//	}
+/*	else
 	{
 		while (s_a->min_nbr != s_a->nbrs[0])
 		{
@@ -119,7 +125,7 @@ void		solve_big(t_stack *s_a, t_stack *s_b)
 			}
 		}
 	}
-	while (s_b->current_size != 0)
+*/	while (s_b->current_size != 0)
 	{
 		ft_putendl("pa");
 		push_a(s_a, s_b);

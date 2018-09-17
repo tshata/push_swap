@@ -19,8 +19,8 @@ int 	read_nbrs(char *str, t_stack *s_a)
 
 	nbr = 0;
 	sign = 1;
-	hile (*str)
-    {
+	while (*str)
+        {
         if (*str == '-')
             sign = -1;
         else if (!ft_isdigit(*str))
@@ -116,7 +116,9 @@ int		main(int argc, char **argv)
 		init(&s_a, &s_b, size, argv);
 		if (fill_s_a(argv, size, &s_a))
 		{
-			if (size == 3)
+			if (is_sorted(s_a.nbrs, size))
+					exit (1);
+			else if (size == 3)
 				solve_three(&s_a);
 			else if (size == 4)
 			{
