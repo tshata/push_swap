@@ -40,14 +40,21 @@ void	solve_five_2(t_stack *s_a, t_stack *s_b)
 
 void	solve_five_3(t_stack *s_a, t_stack *s_b)
 {
-	ft_putendl("ra");
-	rotate(s_a);
-	ft_putendl("ra");
-	rotate(s_a);
-	if (is_sorted(s_a->nbrs, 5))
+	int i = 0;
+/*	while (i < 5)
 	{
-		exit(1);
+		ft_putnbr(s_a->nbrs[i]);
+		i++;
 	}
+*/	ft_putendl("ra");
+	rotate(s_a);i = 0;
+/*	while (i < 5)
+	{
+		ft_putnbr(s_a->nbrs[i]);
+		i++;
+	}
+*/	ft_putendl("sa");
+	swap_top(s_a);
 	ft_putendl("pb");
 	push_b(s_a, s_b);
 	solve_4(s_a, s_b);

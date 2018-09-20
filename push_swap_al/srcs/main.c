@@ -37,15 +37,26 @@ int		read_nbrs(char *str, t_stack *s_a)
 	return (1);
 }
 
-int		fill_s_a(char **argv, int argc, t_stack *s_a)
+int		fill_s_a(char **argv, int argc, t_stack *s_a, int flag)
 {
 	int	i;
-
-	i = 1;
-	while (i <= argc)
+	if (flag == 0)
 	{
-		read_nbrs(argv[i], s_a);
-		i++;
+		i = 1;
+		while (i < argc)
+		{
+			read_nbrs(argv[i], s_a);
+			i++;
+		}
+	}
+	else
+	{
+		i = 1;
+		while (i <= argc)
+		{
+			read_nbrs(argv[i], s_a);
+			i++;
+		}
 	}
 	return (1);
 }
@@ -92,6 +103,22 @@ int		handle_input(char *line, t_stack *s_a, t_stack *s_b)
 	return (1);
 }
 
+void		str_arg(char **argv, int size, t_stack s_a, t_stack s_b)
+{
+	char **str;
+       
+	str = ft_strsplit(argv[1],' ');
+	
+	init(&s_a, &s_b, size, str);
+	if (fill_s_a(str, size, &s_a, size - size))
+	{
+		if (is_sorted(s_a.nbrs, size))
+			exit(1);
+		else
+			choose_solution(s_a, s_b, size);
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack	s_a;
@@ -102,8 +129,14 @@ int		main(int argc, char **argv)
 	size = argc - 1;
 	if (size > 0)
 	{
+		if (argc == 2)
+		{
+			size = count_nbrs(argv[1]);
+			str_arg(argv, size, s_a, s_b);
+		}
+		else
 		init(&s_a, &s_b, size, argv);
-		if (fill_s_a(argv, size, &s_a))
+		if (fill_s_a(argv, size, &s_a, argc))
 		{
 			if (is_sorted(s_a.nbrs, size))
 				exit(1);

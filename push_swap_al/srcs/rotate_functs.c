@@ -17,7 +17,7 @@ void	rotate(t_stack *stack)
 	int	temp;
 
 	temp = (stack->nbrs)[0];
-	ft_memmove(&(stack->nbrs[0]), &(stack->nbrs[0]), 4 * (stack->current_size));
+	ft_memmove(&(stack->nbrs[0]), &(stack->nbrs[1]), 4 * (stack->current_size));
 	stack->nbrs[stack->current_size - 1] = temp;
 }
 
